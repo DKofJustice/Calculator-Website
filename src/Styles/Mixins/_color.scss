@@ -1,0 +1,82 @@
+$colors: (
+  "base": (
+    "base-clr-primary": #292424,
+    "base-clr-secondary": #35454b,
+    "ops-clr": #cf1616,
+    "keypad-clr": #ffffff,
+  ),
+  "red": (
+    "base-clr-primary": #ca2b2b,
+    "base-clr-secondary": #6b1e1e,
+    "ops-clr": #dfb8b8,
+    "keypad-clr": #ffffff,
+  ),
+  "white": (
+    "base-clr-primary": #f8f1f1,
+    "base-clr-secondary": #8db8be,
+    "ops-clr": #8aa9ad,
+    "keypad-clr": #747474,
+  ),
+);
+
+@each $clr-set, $shades in $colors {
+  $base-clr-primary: map-get($shades, "base-clr-primary");
+  $base-clr-secondary: map-get($shades, "base-clr-secondary");
+  $ops-clr: map-get($shades, "ops-clr");
+  $keypad-clr: map-get($shades, "keypad-clr");
+
+  .App-#{$clr-set} {
+    background-color: $base-clr-primary;
+  }
+
+  .settings-#{$clr-set} svg g {
+    fill: $keypad-clr;
+  }
+
+  .logo-#{$clr-set} svg rect {
+    fill: $keypad-clr;
+    stroke: $keypad-clr;
+  }
+
+  .logo-#{$clr-set} svg path {
+    fill: $keypad-clr;
+  }
+
+  .result-#{$clr-set} {
+    color: $keypad-clr;
+  }
+
+  .previous-op-#{$clr-set} {
+    color: $ops-clr;
+  }
+
+  .keypad-#{$clr-set} {
+    background-color: rgba(
+      $color: map-get($shades, "base-clr-secondary"),
+      $alpha: 0.2
+    );
+  }
+
+  .row-#{$clr-set} div {
+    background-color: $base-clr-primary;
+    color: rgba($color: map-get($shades, "keypad-clr"), $alpha: 0.65);
+  }
+
+  .row-#{$clr-set} div:hover {
+    background-color: rgba(
+      $color: map-get($shades, "base-clr-secondary"),
+      $alpha: 0.2
+    );
+  }
+
+  .keypad-#{$clr-set} .divide,
+  .keypad-#{$clr-set} .multiply,
+  .keypad-#{$clr-set} .subtract,
+  .keypad-#{$clr-set} .addition {
+    color: rgba($color: map-get($shades, "ops-clr"), $alpha: 0.7);
+  }
+
+  .keypad-#{$clr-set} div.equal {
+    background-color: rgba($color: map-get($shades, "ops-clr"), $alpha: 0.7);
+  }
+}

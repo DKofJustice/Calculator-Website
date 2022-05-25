@@ -1,0 +1,47 @@
+.keypad {
+  width: 100%;
+  min-height: 22em;
+  position: fixed;
+  bottom: 0;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+
+  .rows {
+    @include flexbox(row, center, center);
+    column-gap: 1em;
+    margin-top: 1em;
+  }
+
+  .row-1 {
+    margin-top: 2em;
+  }
+
+  .row-5 {
+    margin-bottom: 2em;
+  }
+
+  .rows div {
+    width: 4.6em;
+    height: 4.6em;
+    border-radius: 40%;
+    @include flexbox(row, center, center);
+    cursor: pointer;
+
+    h3 {
+      font-size: 32px;
+      font-weight: 400;
+    }
+  }
+
+  div.equal {
+    h3 {
+      color: black;
+    }
+  }
+}
+
+@media (min-width: 480px) {
+  .keypad {
+    width: 555px;
+  }
+}
