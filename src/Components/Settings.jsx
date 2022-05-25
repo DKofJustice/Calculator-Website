@@ -1,6 +1,7 @@
 const Settings = ({ setSettingsMenu, colorChange }) => {
     return (
         <div className="settings">
+            <div className="color-picker-div">
             <div className="close-icon"
                onClick={() => setSettingsMenu(false)}
             >
@@ -24,6 +25,7 @@ const Settings = ({ setSettingsMenu, colorChange }) => {
                   className="color white"
                   onClick={() => colorChange("white")}
                 ></div>
+            </div>
             </div>
         </div>
     );

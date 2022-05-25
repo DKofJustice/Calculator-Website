@@ -1,24 +1,17 @@
 .results {
   width: 100%;
-  height: auto;
   @include flexbox(column, flex-end, flex-end);
-
-  .results-window {
-    @include flexbox(column, center, center);
-  }
 
   .previous-op,
   .result {
     width: 100%;
-    min-height: auto;
-    @include flexbox(column, flex-end, center);
+    @include flexbox(column, flex-end, flex-end);
     padding-right: 2.5em;
   }
 
   .previous-op {
     p {
       font-size: 25px;
-      color: #35454b;
     }
   }
 
@@ -26,5 +19,11 @@
     h2 {
       font-size: 65px;
     }
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .results {
+    width: 40em;
   }
 }

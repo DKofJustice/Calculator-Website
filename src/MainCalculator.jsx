@@ -1,8 +1,10 @@
+import Header from './Components/Header';
 import Results from './Components/Results';
 import Keypad from './Components/Keypad';
 import useResults from './Components/useResults';
+import React from 'react';
 
-const MainCalculator = ({ color }) => {
+const MainCalculator = ({ setSettingsMenu, color }) => {
 
   const {result, previousOp, updateResult, 
     setPreviousOp, setResult} = useResults();
@@ -50,22 +52,29 @@ const MainCalculator = ({ color }) => {
   };
 
     return (
-        <div className="calculator">
-        <Results 
-          result={result} 
-          previousOp={previousOp}
-          color={color}
-        />
+        <React.Fragment>
+            <div className='calculator-display'>
+              <Header 
+                  setSettingsMenu={setSettingsMenu}
+                  color={color}
+              />
 
-        <Keypad 
-          updateResult={updateResult}
-          resetResult={resetResult}
-          calcResult={calcResult}
-          eraseResult={eraseResult}
-          negNum={negNum}
-          color={color}
-        />
-        </div>
+              <Results 
+                  result={result} 
+                  previousOp={previousOp}
+                  color={color}
+              />
+            </div>
+
+            <Keypad 
+                updateResult={updateResult}
+                resetResult={resetResult}
+                calcResult={calcResult}
+                eraseResult={eraseResult}
+                negNum={negNum}
+                color={color}
+            />
+        </React.Fragment>
     );
 }
  

@@ -1,18 +1,23 @@
 import SvgSettingsIcon from '../Assets/SVGIconComponents/SettingsIcon';
-import SvgCalculatorLogo from '../Assets/SVGIconComponents/CalculatorLogo';
 
 const Header = ({ setSettingsMenu, color }) => {
+
+    let settingsMenuWindow = document.querySelector('.settings');
+
+    let settingsMenuToggle = () => {
+      setSettingsMenu(true);
+
+      settingsMenuWindow.classList.add('settings-toggle-transition');
+      console.log('it works', settingsMenuWindow)
+    }
+
     return (
         <header>
 
           <div className={`settings-icon settings-${color}`}
-            onClick={() => setSettingsMenu(true)}
+            onClick={settingsMenuToggle}
           >
             <SvgSettingsIcon />
-          </div>
-
-          <div className={`logo logo-${color}`}>
-            <SvgCalculatorLogo />
           </div>
         </header>
     );

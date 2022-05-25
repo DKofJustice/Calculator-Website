@@ -3,19 +3,28 @@
   background-color: #292424;
 }
 
+.settings-base svg g {
+  fill: #ffffff;
+}
+
+.logo-base svg path {
+  fill: #ffffff;
+}
+
 .result-base {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .previous-op-base {
-  color: #cf1616;
+  color: #886969;
 }
 
 .keypad-base {
   background-color: rgba(53, 69, 75, 0.2);
 }
 
-.row-base div {
+.row-base div,
+.keypad-base div.equal {
   background-color: #292424;
   color: rgba(255, 255, 255, 0.65);
 }
@@ -24,23 +33,20 @@
   background-color: rgba(53, 69, 75, 0.2);
 }
 
-.keypad-base .divide,
-.keypad-base .multiply,
-.keypad-base .subtract,
-.keypad-base .addition {
-  color: rgba(207, 22, 22, 0.7);
-}
-
-.keypad-base div.equal {
-  background-color: rgba(207, 22, 22, 0.7);
-}
-
 .App-red {
   background-color: #ca2b2b;
 }
 
+.settings-red svg g {
+  fill: #ffffff;
+}
+
+.logo-red svg path {
+  fill: #ffffff;
+}
+
 .result-red {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .previous-op-red {
@@ -51,7 +57,8 @@
   background-color: rgba(107, 30, 30, 0.2);
 }
 
-.row-red div {
+.row-red div,
+.keypad-red div.equal {
   background-color: #ca2b2b;
   color: rgba(255, 255, 255, 0.65);
 }
@@ -60,23 +67,20 @@
   background-color: rgba(107, 30, 30, 0.2);
 }
 
-.keypad-red .divide,
-.keypad-red .multiply,
-.keypad-red .subtract,
-.keypad-red .addition {
-  color: rgba(223, 184, 184, 0.7);
-}
-
-.keypad-red div.equal {
-  background-color: rgba(223, 184, 184, 0.7);
-}
-
 .App-white {
   background-color: #f8f1f1;
 }
 
+.settings-white svg g {
+  fill: #747474;
+}
+
+.logo-white svg path {
+  fill: #747474;
+}
+
 .result-white {
-  color: #747474;
+  color: rgba(116, 116, 116, 0.8);
 }
 
 .previous-op-white {
@@ -87,24 +91,14 @@
   background-color: rgba(141, 184, 190, 0.2);
 }
 
-.row-white div {
+.row-white div,
+.keypad-white div.equal {
   background-color: #f8f1f1;
   color: rgba(116, 116, 116, 0.65);
 }
 
 .row-white div:hover {
   background-color: rgba(141, 184, 190, 0.2);
-}
-
-.keypad-white .divide,
-.keypad-white .multiply,
-.keypad-white .subtract,
-.keypad-white .addition {
-  color: rgba(138, 169, 173, 0.7);
-}
-
-.keypad-white div.equal {
-  background-color: rgba(138, 169, 173, 0.7);
 }
 
 * {
@@ -123,18 +117,17 @@
 
 .container {
   width: 100%;
-  height: 100%;
 }
 
 .settings {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(90, 97, 111, 0.2);
 }
 
 .settings .close-icon {
-  width: 3em;
-  height: 3em;
+  width: 3rem;
+  height: 3rem;
   margin-left: auto;
   margin-right: 2em;
   margin-top: 2em;
@@ -156,7 +149,7 @@
 }
 
 .settings .close-icon p {
-  font-size: 35px;
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.65);
 }
 
@@ -174,12 +167,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-left: 2em;
+  margin-left: 1.5em;
   margin-bottom: 2.5em;
 }
 
 .settings .color-title h3 {
-  font-size: 25px;
+  font-size: 1.6rem;
   color: rgba(255, 255, 255, 0.45);
 }
 
@@ -201,7 +194,7 @@
           align-items: center;
   -webkit-column-gap: 1.5em;
           column-gap: 1.5em;
-  margin-left: 2em;
+  margin-left: 1.5em;
 }
 
 .settings .colors .color {
@@ -223,22 +216,30 @@
   background: linear-gradient(33.69deg, #8aa9ad 17.84%, rgba(248, 241, 241, 0.65) 73.16%);
 }
 
+@media screen and (min-width: 40em) {
+  .settings {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .color-picker-div {
+    width: 35em;
+  }
+}
+
 header {
   width: 100%;
   height: 6em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: "row";
-          flex-direction: "row";
-  -webkit-box-pack: "center";
-      -ms-flex-pack: "center";
-          justify-content: "center";
-  -webkit-box-align: "flex-start";
-      -ms-flex-align: "flex-start";
-          align-items: "flex-start";
   position: relative;
 }
 
@@ -266,10 +267,6 @@ header .settings-icon svg {
   cursor: pointer;
 }
 
-header .settings-icon svg g {
-  fill: #ffffff;
-}
-
 header .logo {
   margin: auto;
   color: white;
@@ -279,9 +276,14 @@ header .logo h1 {
   font-weight: 400;
 }
 
+@media screen and (min-width: 40em) {
+  header {
+    width: 40em;
+  }
+}
+
 .results {
   width: 100%;
-  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -297,26 +299,9 @@ header .logo h1 {
           align-items: flex-end;
 }
 
-.results .results-window {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .results .previous-op,
 .results .result {
   width: 100%;
-  min-height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -324,9 +309,9 @@ header .logo h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -335,16 +320,20 @@ header .logo h1 {
 
 .results .previous-op p {
   font-size: 25px;
-  color: #35454b;
 }
 
 .results .result h2 {
   font-size: 65px;
 }
 
+@media screen and (min-width: 40em) {
+  .results {
+    width: 40em;
+  }
+}
+
 .keypad {
   width: 100%;
-  min-height: 22em;
   position: fixed;
   bottom: 0;
   border-top-left-radius: 30px;
@@ -365,22 +354,22 @@ header .logo h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-column-gap: 1em;
-          column-gap: 1em;
-  margin-top: 1em;
+  -webkit-column-gap: 1rem;
+          column-gap: 1rem;
+  margin-top: 1rem;
 }
 
 .keypad .row-1 {
-  margin-top: 2em;
+  margin-top: 2rem;
 }
 
 .keypad .row-5 {
-  margin-bottom: 2em;
+  margin-bottom: 2rem;
 }
 
 .keypad .rows div {
-  width: 4.6em;
-  height: 4.6em;
+  width: 4rem;
+  height: 4rem;
   border-radius: 40%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -400,10 +389,28 @@ header .logo h1 {
 
 .keypad .rows div h3 {
   font-size: 32px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .keypad div.equal h3 {
   color: black;
+}
+
+@media screen and (min-width: 40em) {
+  .calculator-display {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 /*# sourceMappingURL=index.css.map */

@@ -1,7 +1,6 @@
 import Settings from './Components/Settings';
-import CalculatorWindow from "./CalculatorWindow";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import MainCalculator from './MainCalculator';
 
 function App() {
   const [settingsMenu, setSettingsMenu] = useState(false);
@@ -21,14 +20,12 @@ function App() {
     localStorage.setItem('color', JSON.stringify(color));
   }, [color]);
 
-  console.log(localStorage, color);
 
   return (
-    <Router>
     <div className={`App App-${color}`}>
       <div className="container">
           {settingsMenu === false && (
-            <CalculatorWindow 
+            <MainCalculator 
             setSettingsMenu={setSettingsMenu}
             color={color}
             />
@@ -41,7 +38,6 @@ function App() {
           )}
       </div>
     </div>
-    </Router>
   );
 }
 

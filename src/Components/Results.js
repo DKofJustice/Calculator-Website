@@ -18,7 +18,7 @@ const Results = ({ color, result, previousOp }) => {
 
     return (
         <div className="results">
-          <div className="results-window">
+
             <div className={`previous-op previous-op-${color}`}>
               <p>{previousOp}</p>
             </div>
@@ -26,7 +26,7 @@ const Results = ({ color, result, previousOp }) => {
             <div className={`result result-${color}`}>
               <h2 style={style}>{result || "0"}</h2>
             </div>
-          </div>
+
         </div>
     );
 }
